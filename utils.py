@@ -75,54 +75,70 @@ def separate_days(df):
     return week
 
 
-    # this function also works with each day of the week in individual series
-    # the seconds of sleep will be rounded to the nearest hundredth of an hour
-    # and then each day of the week's series will be evaluated to determine
-    # which day of the week has the most occurences of the mode value (8.78)
-def mode_by_day(df):
-    M, T, W, R, F, Sa, Su = ([], ) * 7
+# these functions also works with each day of the week in individual series
+# the seconds of sleep will be rounded to the nearest hour
+# and then each day of the week's mode will be determined
+def mode_mon(df):
+    M = []
     curr_col = df["Monday"]
     for i in range(len(df["Monday"])):
         curr_day = df["Monday"].iloc[i]
-        hours = round(df["Monday"].iloc[i]/3600, 2)
+        hours = round(df["Monday"].iloc[i]/3600, 0)
         M.append(hours)
     M = pd.Series(M).dropna()
     # )print(M)
+    return M
+def mode_tues(df):
+    T = []
     curr_col = df["Tuesday"]
     for i in range(len(df["Tuesday"])):
         curr_day = df["Tuesday"].iloc[i]
-        hours = round(curr_day/3600, 2)
+        hours = round(curr_day/3600, 0)
         T.append(hours)
     T = pd.Series(T).dropna()
+    return T
+def mode_wed(df):
+    W = []
     curr_col = df["Wednesday"]
     for i in range(len(df["Wednesday"])):
         curr_day = df["Wednesday"].iloc[i]
-        hours = round(curr_day/3600, 2)
+        hours = round(curr_day/3600, 0)
         W.append(hours)
     W = pd.Series(W).dropna()
+    return W
+def mode_thurs(df):
+    R = []
     curr_col = df["Thursday"]
     for i in range(len(df["Thursday"])):
         curr_day = df["Thursday"].iloc[i]
-        hours = round(curr_day/3600, 2)
+        hours = round(curr_day/3600, 0)
         R.append(hours)
     R = pd.Series(R).dropna()
+    return R
+def mode_fri(df):
+    F = []
     curr_col = df["Friday"]
     for i in range(len(df["Friday"])):
         curr_day = df["Friday"].iloc[i]
-        hours = round(curr_day/3600, 2)
+        hours = round(curr_day/3600, 0)
         F.append(hours)
     F = pd.Series(F).dropna()
+    return F
+def mode_sat(df):
+    Sa = []
     curr_col = df["Saturday"]
     for i in range(len(df["Saturday"])):
         curr_day = df["Saturday"].iloc[i]
-        hours = round(curr_day/3600, 2)
+        hours = round(curr_day/3600, 0)
         Sa.append(hours)
     Sa = pd.Series(Sa).dropna()
+    return Sa
+def mode_sun(df):
+    Su = []
     curr_col = df["Sunday"]
     for i in range(len(df["Sunday"])):
         curr_day = df["Sunday"].iloc[i]
-        hours = round(curr_day/3600, 2)
+        hours = round(curr_day/3600, 0)
         Su.append(hours)
     Su = pd.Series(Su).dropna()
-    week = {'Monday':M, 'Tuesday':T, 'Wednesday':W, 'Thursday':R, 'Friday':F, 'Saturday':Sa, 'Sunday':Su }
-    return week
+    return Su
