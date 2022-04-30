@@ -150,3 +150,32 @@ def scatter_chart_example(x_ser, y_ser):
     plt.scatter(x_ser, y_ser, color="black", s=100)
     plt.xticks(rotation=25, ha="right")
     plt.tight_layout()
+
+
+# makes a bar chart
+def bar_graph_example(x_ser, y_ser):
+    plt.figure()    # creates a NEW CURRENT FIGURE
+    plt.bar(x_ser, y_ser)
+    plt.xticks(rotation=25, ha="right")
+    plt.tight_layout()
+    # plt.savefig("bar_example.png")
+
+# makes a line chart
+def line_chart_example(x_ser, y_ser, z_ser, i_ser, j_ser, k_ser, labely, labelz, labeli, labelj, labelk):
+    plt.figure(figsize=(20,10))
+    # plt.plot(x_ser, z_ser, label=labely, ls="--")
+    # plt.plot(x_ser, y_ser, label=labelz, lw=5)
+    # plt.plot(x_ser, i_ser, label=labeli, ls="--")
+    plt.plot(x_ser, j_ser, label=labelj, lw=5)
+    plt.plot(x_ser, k_ser, label=labelk, ls="--")
+    plt.xticks(rotation=25, ha="right")
+    # plt.xlabel("Players")
+    # plt.ylabel("Total")
+    # plt.title("Gonzaga 21-22 Season")
+    plt.grid()
+    plt.legend()
+    # task: add another parameter to our line_chart_example function for the total minutes played
+    # and add a line to the chart for total minutes played 
+    # are the points related?
+    # right before "rendering" the figure, it's good to call this handy little function:
+    plt.tight_layout()
