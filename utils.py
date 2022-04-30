@@ -1,7 +1,7 @@
 
 from re import M
 import pandas as pd
-
+import matplotlib.pyplot as plt
 
 # this function converts a timestamp in HH:MM:SS into an integer # of seconds 
 import nacl
@@ -142,3 +142,11 @@ def mode_sun(df):
         Su.append(hours)
     Su = pd.Series(Su).dropna()
     return Su
+
+
+# This function makes a scatter chart 
+def scatter_chart_example(x_ser, y_ser):
+    plt.figure()    # creates a NEW CURRENT FIGURE
+    plt.scatter(x_ser, y_ser, color="black", s=100)
+    plt.xticks(rotation=25, ha="right")
+    plt.tight_layout()
