@@ -161,13 +161,12 @@ def bar_graph_example(x_ser, y_ser):
     # plt.savefig("bar_example.png")
 
 # makes a line chart
-def line_chart_example(x_ser, y_ser, z_ser, i_ser, j_ser, k_ser, labely, labelz, labeli, labelj, labelk):
+def line_chart_example(x_ser, y_ser, z_ser, i_ser, labeli, labelj, labelk):
+    
     plt.figure(figsize=(20,10))
-    # plt.plot(x_ser, z_ser, label=labely, ls="--")
-    # plt.plot(x_ser, y_ser, label=labelz, lw=5)
-    # plt.plot(x_ser, i_ser, label=labeli, ls="--")
-    plt.plot(x_ser, j_ser, label=labelj, lw=5)
-    plt.plot(x_ser, k_ser, label=labelk, ls="--")
+    plt.plot(x_ser, z_ser, label=labeli, ls="--")
+    plt.plot(x_ser, y_ser, label=labelj, lw=5)
+    plt.plot(x_ser, i_ser, label=labelk, ls="--")
     plt.xticks(rotation=25, ha="right")
     # plt.xlabel("Players")
     # plt.ylabel("Total")
