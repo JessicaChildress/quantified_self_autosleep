@@ -168,9 +168,9 @@ def line_chart_example(x_ser, y_ser, z_ser, i_ser, labeli, labelj, labelk):
     plt.plot(x_ser, y_ser, label=labelj, lw=5)
     plt.plot(x_ser, i_ser, label=labelk, ls="--")
     plt.xticks(rotation=25, ha="right")
-    # plt.xlabel("Players")
-    # plt.ylabel("Total")
-    # plt.title("Gonzaga 21-22 Season")
+    plt.xlabel("Date")
+    # plt.ylabel("")
+    plt.title("Trend Sleuthing")
     plt.grid()
     plt.legend()
     # task: add another parameter to our line_chart_example function for the total minutes played
