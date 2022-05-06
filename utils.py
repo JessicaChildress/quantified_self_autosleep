@@ -1,15 +1,23 @@
+#   #   #   #   #   #   #   #   #   #   #   #   #   #   #   #
+# Jessica Childress 
+# Gonzaga University 
+# 28 April 2022
+# This is the utility file where I store the functions I 
+# used throughout this quantified-self project data project.
+#   #   #   #   #   #   #   #   #   #   #   #   #   #   #   #
+
 
 from re import M
 import pandas as pd
 import matplotlib.pyplot as plt
-
-# this function converts a timestamp in HH:MM:SS into an integer # of seconds 
 import nacl
 from numpy import False_
 from regex import F
 from sqlalchemy import case
 
-
+# this function converts a timestamp in HH:MM:SS into an integer # of seconds 
+# input: pandas DataFrame, column name (string)
+# returns: dataframe with column updated from timestamp to seconds
 def clean_sleep(df, col):
     ser = df[col].copy()
     for i in range(len(ser)):
@@ -22,6 +30,8 @@ def clean_sleep(df, col):
 
 
 # this function converts an integer # of seconds into a string of hours/min/secs
+# input: int 
+# returns: a string that says how many hours, minutes, and seconds the value is
 def sec_to_hours(seconds):
     a=str(seconds//3600)
     b=str((seconds%3600)//60)
@@ -32,6 +42,11 @@ def sec_to_hours(seconds):
 # this function allocates a series for each day of the week
 # note: uses the 'fromDate' column to mark when sleep started
 # rather than the day when I woke up
+# input: pandas DataFrame
+# returns: dictionary containing instances separated by the day
+# of the week
+# another note: this function became obsolete once I discovered 
+# the miracle of joining two dataframes...
 def separate_days(df):
     ser = df["fromDate"].copy()
     mon = []
@@ -78,6 +93,8 @@ def separate_days(df):
 # these functions also works with each day of the week in individual series
 # the seconds of sleep will be rounded to the nearest hour
 # and then each day of the week's mode will be determined
+# input: pandas Dataframe
+# returns: mode for number of seconds slept by day of the week
 def mode_mon(df):
     M = []
     curr_col = df["Monday"]
@@ -145,6 +162,8 @@ def mode_sun(df):
 
 
 # This function makes a scatter chart 
+# input: two pandas Series 
+# no returns 
 def scatter_chart_example(x_ser, y_ser):
     plt.figure()    # creates a NEW CURRENT FIGURE
     plt.scatter(x_ser, y_ser, color="black", s=100)
@@ -153,6 +172,8 @@ def scatter_chart_example(x_ser, y_ser):
 
 
 # makes a bar chart
+# input: two pandas series
+# not returns 
 def bar_graph_example(x_ser, y_ser):
     plt.figure()    # creates a NEW CURRENT FIGURE
     plt.bar(x_ser, y_ser)
@@ -161,6 +182,8 @@ def bar_graph_example(x_ser, y_ser):
     # plt.savefig("bar_example.png")
 
 # makes a line chart
+# input: pandas series and their labels as string (for the legend)
+# no returns, but this one saves as a .png to be used in the main notebook
 def line_chart_example(x_ser, y_ser, z_ser, i_ser, labeli, labelj, labelk):
     
     plt.figure(figsize=(20,10))
@@ -169,12 +192,7 @@ def line_chart_example(x_ser, y_ser, z_ser, i_ser, labeli, labelj, labelk):
     plt.plot(x_ser, i_ser, label=labelk, ls="--")
     plt.xticks(rotation=25, ha="right")
     plt.xlabel("Date")
-    # plt.ylabel("")
     plt.title("Trend Sleuthing")
     plt.grid()
     plt.legend()
-    # task: add another parameter to our line_chart_example function for the total minutes played
-    # and add a line to the chart for total minutes played 
-    # are the points related?
-    # right before "rendering" the figure, it's good to call this handy little function:
     plt.tight_layout()
